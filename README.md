@@ -6,7 +6,7 @@ The problem requires a Java Delegate to invoke a Microprofile Rest-Client. When 
 ## Camunda Integration
 
 * The current version of Camunda is 7.20.0. I have also tested Camunda 7.20.2-ee.
-* The current version of Quarkus is 3.2.9.Final (It does not work with the latest version of Quarkus 6.3.4)
+* The current version of Quarkus is 3.2.9.Final (It does not work with the latest version of Quarkus 3.6.4)
 
 ### Camunda Related Information
 
@@ -153,7 +153,8 @@ Caused by: java.lang.ClassNotFoundException: dk.stonemountain.client.EchoResourc
         at dk.stonemountain.client.EchoResource$$CDIWrapper_Bean.doCreate(Unknown Source)
         ... 112 more
 ```
-## Reference
+
+## References
 
 * https://docs.camunda.org/manual/develop/user-guide/quarkus-integration - how to integrate Camunda into Quarkus
 * https://forum.camunda.io/t/classnotfoundexception-for-mp-restclient-interfaces-since-quarkus-version-2-8-2/38327 - another developer having the same problem and a workaround.
