@@ -11,6 +11,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import jakarta.inject.Inject;
+import jakarta.json.bind.annotation.JsonbProperty;
 import jakarta.transaction.Transactional;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.POST;
@@ -21,7 +22,7 @@ import jakarta.ws.rs.core.MediaType;
 @Path("/tests")
 @Transactional
 public class TestResource {
-    public static record Process(String businessKey, String processDefinition, String version) {}
+    public static record Process(@JsonbProperty("business-key") Long businessKey, @JsonbProperty("process-instance-id") String processInstanceId, @JsonbProperty("process-definition") String processDefinition, @JsonbProperty("process-definition-version") String version) {}
 
     private static final Logger log = LoggerFactory.getLogger(TestResource.class);
     private static final String PROCESS_DEFINITION = "test-process";	
@@ -42,12 +43,13 @@ public class TestResource {
     @Produces(MediaType.APPLICATION_JSON)
     public Process startProcess() {
         log.info("Starting process");
-        String id = startProcess(PROCESS_DEFINITION, CURRENT_PROCESS_VERSION, counter.getAndIncrement());
-        return new Process(id, PROCESS_DEFINITION, CURRENT_PROCESS_VERSION);
+        var businessKey = counter.getAndIncrement();
+        String id = startProcess(PROCESS_DEFINITION, CURRENT_PROCESS_VERSION, businessKey);
+        return new Process(businessKey, id, PROCESS_DEFINITION, CURRENT_PROCESS_VERSION);
     }
 
    	private String startProcess(String process, String version, Long businessKey) {
-		log.debug("Starting process {}/{} with business key {} and variables", process, version, businessKey);
+		log.debug("Starting process {}/{} with business key {}", process, version, businessKey);
 		var processDefinitionCandidates = repositoryService.createProcessDefinitionQuery()
 			.processDefinitionKey(process)
 			.list();

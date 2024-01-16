@@ -10,8 +10,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import dk.stonemountain.client.EchoResource;
+import jakarta.enterprise.context.Dependent;
 import jakarta.inject.Inject;
+import jakarta.inject.Named;
 
+@Named("work")
+@Dependent
 public class WorkDelegate implements JavaDelegate {
     private static final Logger log = LoggerFactory.getLogger(WorkDelegate.class);
 
