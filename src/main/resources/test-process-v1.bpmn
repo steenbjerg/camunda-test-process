@@ -10,7 +10,7 @@
       <bpmn:incoming>Flow_09067u0</bpmn:incoming>
       <bpmn:terminateEventDefinition id="TerminateEventDefinition_0kciz8u" />
     </bpmn:endEvent>
-    <bpmn:serviceTask id="Activity_1rcnr0y" name="work" camunda:delegateExpression="${work}">
+    <bpmn:serviceTask id="Activity_1rcnr0y" name="work" camunda:asyncBefore="true" camunda:delegateExpression="${work}">
       <bpmn:incoming>Flow_0bkfoa0</bpmn:incoming>
       <bpmn:outgoing>Flow_09067u0</bpmn:outgoing>
     </bpmn:serviceTask>
