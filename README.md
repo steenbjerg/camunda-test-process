@@ -1,7 +1,7 @@
 # camunda-test-process
 
-Show case project for demonstrating a problem with Camunda in Quarkus when running QuarkusDev (./gradlew quarkusDev). The problem occurs when the process definition contains a asynchronious service tasks. Actually, it looks like the problem occurs whenever Camunda has to create a thread.
-The problem requires a Java Delegate to invoke a Microprofile Rest-Client. When the service tasks is invoked in a asynchronious delegate, then the Java Delegate can not load the rest-client Java class.
+Show case project for demonstrating a problem with Camunda in Quarkus when running QuarkusDev (./gradlew quarkusDev). The problem occurs when the process definition contains a asynchronous service tasks. Actually, it looks like the problem occurs whenever Camunda has to create a thread.
+The problem requires a Java Delegate to invoke a Microprofile Rest-Client. When the service tasks is invoked in a asynchronous delegate, then the Java Delegate can not load the rest-client Java class.
 
 ## Camunda Integration
 
