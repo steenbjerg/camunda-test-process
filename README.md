@@ -158,3 +158,7 @@ Caused by: java.lang.ClassNotFoundException: dk.stonemountain.client.EchoResourc
 
 * https://docs.camunda.org/manual/develop/user-guide/quarkus-integration - how to integrate Camunda into Quarkus
 * https://forum.camunda.io/t/classnotfoundexception-for-mp-restclient-interfaces-since-quarkus-version-2-8-2/38327 - another developer having the same problem and a workaround.
+
+## Camunda solution
+
+I created an support issue at Camunda support (https://jira.camunda.com/browse/SUPPORT-20108 - probably not visibel to you unless you have bought support). They responded with a workaround which seems to work. You simply have to add an application scoped bean (class dk.stonemountain.CoreProcessEngineConfig) to your Quarkus application.
